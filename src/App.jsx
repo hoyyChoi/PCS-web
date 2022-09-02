@@ -9,28 +9,27 @@ import Settings from './component/Settings';
 import Newarticle from './component/Newarticle';
 import Profile from './component/Profile';
 import ArticleDetail from './component/Article/ArticleDetail';
+import { useState } from 'react';
 
 function App() {
+
+  const [auth,setAuth] = useState(false)
+
 
 
   return (
     <div>
-      
-      <Navbar />
-      
+      <Navbar auth={auth}/>
         <Routes>
-          <Route path='/' element={<Home />}/>
+          <Route path='/' element={<Home auth={auth}/>}/>
           <Route path='/login' element={<Signin />}/>
           <Route path='/register' element={<Signup />}/>
           <Route path='/settings' element={<Settings />}/>
           <Route path='/editor' element={<Newarticle />}/> 
           <Route path='/a' element={<Profile />}/> 
           <Route path='/b' element={<ArticleDetail />}/> 
-
         </Routes>
-
       <Footer />
-      
     </div>
   )
 }
