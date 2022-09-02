@@ -8,7 +8,7 @@ import Signup from './component/Signup';
 import Settings from './component/Settings';
 import Newarticle from './component/Newarticle';
 import Profile from './component/Profile';
-import ArticleDetail from './component/ArticleDetail';
+import ArticleDetail from './component/Article/ArticleDetail';
 
 function App() {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import Article from './Article'
+import ArticleList from './ArticleList'
 import Populartags from './Populartags'
 
 const Home = () => {
@@ -28,9 +28,9 @@ const Home = () => {
                     </ul>
                 </div>
 
-                <Article />
-                <Article />
-                <Article />
+                <ArticleList />
+                <ArticleList />
+                <ArticleList />
             </div>
 
             <Populartags />

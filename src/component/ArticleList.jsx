@@ -1,17 +1,14 @@
 import React from 'react'
+import WritterInfo from './WritterInfo'
 
-const Article = () => {
+const ArticleList = () => {
   return (
 <div class="article-preview">
     <div class="article-meta">
-        <a href=""><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
-            <div class="info">
-                <a href="" class="author">시몬스</a>
-                <span class="date">January 20th</span>
-            </div>       
+        <WritterInfo />    
             <button class="btn btn-outline-primary btn-sm pull-xs-right">
-                    <i class="ion-heart"></i> 29
-            </button>
+                    <i class="ion-heart"></i> 
+            </button> 
     </div>
     <a href="" class="preview-link">
         <h1>How to build webapps that scale</h1>
@@ -22,4 +19,4 @@ const Article = () => {
   )
 }
 
-export default Article
+export default ArticleList
