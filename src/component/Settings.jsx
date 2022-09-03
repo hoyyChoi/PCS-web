@@ -1,6 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Settings = () => {
+const Settings = ({setAuth}) => {
+
+    let navigate = useNavigate()
+
+    const logOut = () =>{
+        setAuth(false)
+        navigate("/")
+    }
+
   return (
     <div class="settings-page">
     <div class="container page">
@@ -31,7 +40,7 @@ const Settings = () => {
                             Update Settings
                         </button>
                     </fieldset>
-                    <button class="btn btn-outline-danger" ng-click="$ctrl.logout()">
+                    <button class="btn btn-outline-danger" ng-click="$ctrl.logout()" onClick={logOut}>
                         Or click here to logout.
                     </button>
                 </form>

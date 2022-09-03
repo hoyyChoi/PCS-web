@@ -1,6 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const Signin = () => {
+const Signin = ({setAuth}) => {
+
+    let navigate = useNavigate()
+    const loginUser = () =>{
+        setAuth(true)
+        navigate('/')
+    }
+
   return (
     <div class="auth-page">
     <div class="container page">
@@ -9,7 +17,7 @@ const Signin = () => {
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h1 class="text-xs-center">Sign in</h1>
                 <p class="text-xs-center">
-                    <a href="">Need an account?</a>
+                    <a href="/register">Need an account?</a>
                 </p>
 
 
@@ -20,7 +28,7 @@ const Signin = () => {
                     <fieldset class="form-group">
                         <input class="form-control form-control-lg" type="password" placeholder="Password"/>
                     </fieldset>
-                    <button class="btn btn-lg btn-primary pull-xs-right">
+                    <button class="btn btn-lg btn-primary pull-xs-right" onClick={loginUser}>
                         Sign in
                     </button>
                 </form>
