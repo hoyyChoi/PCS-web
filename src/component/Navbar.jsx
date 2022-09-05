@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // <li> 테그에 있는 데이터들을 배열로 이동시킨후, map 내장함수를 이용해서 뿌려준다
 // 로그인 했을떄랑 안했을때 보여지는게 다른데 그 부분을 배열로 표현 할 수 있는지.
@@ -18,56 +18,54 @@ const Navbar = ({ auth }) => {
   const notLoggedIn = ["Home", "Sign in", "Sign up"];
   const isLoggedIn = ["Home", "New Article", "Settings", "username"];
 
-  let navigate =useNavigate()
+ 
 
   
   return (
     <nav class="navbar navbar-light">
       <div class="container">
-        <a class="navbar-brand" style={{cursor:'pointer'}} onClick={()=>navigate('/')}>
+        <Link class="navbar-brand" to='/'>
           conduit
-        </a>
+        </Link>
 
         <ul class="nav navbar-nav pull-xs-right">
           {auth ? (
             <div>
               <li class="nav-item">
-                <a class="nav-link active" style={{cursor:'pointer'}} onClick={()=>navigate('/')}>
-                  Home
-                </a>
+                <Link class="nav-link active" to='/'>Home</Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" style={{cursor:'pointer'}} onClick={()=>navigate('/editor')}>
+              <Link class="nav-link" to='/editor'>
                   <i class="ion-compose"></i>&nbsp;New Article
-                </a>
+              </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" style={{cursor:'pointer'}} onClick={()=>navigate('/settings')}>
-                  <i class="ion-gear-a"></i>&nbsp;Settings
-                </a>
+              <Link class="nav-link" to='/settings'>
+                  <i class="ion-compose"></i>&nbsp;Settings
+              </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active"style={{cursor:'pointer'}} onClick={()=>navigate('/a')}>
-                  username
-                </a>
+              <li className="nav-item">
+                  <Link class="nav-link active" to='/a'>
+                      username
+                  </Link>
               </li>
             </div>
           ) : (
             <div>
-              <li class="nav-item">
-                <a class="nav-link active"style={{cursor:'pointer'}} onClick={()=>navigate('/')}>
-                  Home
-                </a>
+              <li className="nav-item">
+                  <Link class="nav-link active" to='/'>
+                      Home
+                  </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" style={{cursor:'pointer'}} onClick={()=>navigate('/login')}>
-                  Sign in
-                </a>
+              <li className="nav-item">
+                  <Link class="nav-link" to='/login'>
+                      Sign in
+                  </Link>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" style={{cursor:'pointer'}} onClick={()=>navigate('/register')}>
-                  Sign up
-                </a>
+              <li className="nav-item">
+                  <Link class="nav-link" to='/register'>
+                      Sign up
+                  </Link>
               </li>
             </div>
           )}
