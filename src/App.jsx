@@ -15,7 +15,6 @@ import {authState} from './atoms/auth'
 function App() {
 
   const [auth,setAuth] = useRecoilState(authState)
-  console.log(auth)
   
   return (
     <div>

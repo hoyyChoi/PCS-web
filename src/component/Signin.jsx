@@ -9,6 +9,8 @@ const Signin = ({setAuth}) => {
         navigate('/')
     }
 
+    
+
   return (
     <div class="auth-page">
     <div class="container page">
@@ -21,14 +23,14 @@ const Signin = ({setAuth}) => {
                 </p>
 
 
-                <form>
+                <form onSubmit={(e)=>signin(e)}>
                     <fieldset class="form-group">
                         <input class="form-control form-control-lg" type="text" placeholder="Email"/>
                     </fieldset>
                     <fieldset class="form-group">
                         <input class="form-control form-control-lg" type="password" placeholder="Password"/>
                     </fieldset>
-                    <button class="btn btn-lg btn-primary pull-xs-right" onClick={loginUser}>
+                    <button class="btn btn-lg btn-primary pull-xs-right" type='submit'>
                         Sign in
                     </button>
                 </form>
