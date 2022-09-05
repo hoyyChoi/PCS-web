@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { getLoginUser } from '../remote'
 
 const Settings = ({setAuth}) => {
 
@@ -10,6 +12,22 @@ const Settings = ({setAuth}) => {
         navigate("/")
     }
 
+    const [username,setUsername]=useState('');
+    const [email,setEmail]=useState('');
+    
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+
+        getLoginUser()
+        .then(res=>
+            console.log(res)
+            
+        ).catch(err=>
+            console.log(err)
+        )
+    }
+
+
   return (
     <div class="settings-page">
     <div class="container page">
@@ -18,20 +36,20 @@ const Settings = ({setAuth}) => {
             <div class="col-md-6 offset-md-3 col-xs-12">
                 <h1 class="text-xs-center">Your Settings</h1>
 
-                <form>
+                <form onSubmit={(e)=>handleSubmit(e)}>
                     <fieldset>
                         <fieldset class="form-group">
                             <input class="form-control" type="text" placeholder="URL of profile picture"/>
                         </fieldset>
                         <fieldset class="form-group">
-                            <input class="form-control form-control-lg" type="text" placeholder="Your Name"/>
+                            <input class="form-control form-control-lg" type="text" placeholder="User Name" value={username} onChange={(event)=>setUsername(event.currentTarget.value)} />
                         </fieldset>
                         <fieldset class="form-group">
                             <textarea class="form-control form-control-lg" rows="8"
                                       placeholder="Short bio about you"></textarea>
                         </fieldset>
                         <fieldset class="form-group">
-                            <input class="form-control form-control-lg" type="text" placeholder="Email"/>
+                            <input class="form-control form-control-lg" type="email" placeholder="Email" value={email} onChange={(event)=>setEmail(event.currentTarget.value)}/>
                         </fieldset>
                         <fieldset class="form-group">
                             <input class="form-control form-control-lg" type="password" placeholder="Password"/>
