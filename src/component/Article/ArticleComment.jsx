@@ -3,53 +3,53 @@ import WritterInfo from "../WritterInfo";
 
 const ArticleComment = () => {
   return (
-    <div class="row">
-      <div class="col-xs-12 col-md-8 offset-md-2">
-        <form class="card comment-form">
-          <div class="card-block">
+    <div className="row">
+      <div className="col-xs-12 col-md-8 offset-md-2">
+        <form className="card comment-form">
+          <div className="card-block">
             <textarea
-              class="form-control"
+              className="form-control"
               placeholder="Write a comment..."
               rows="3"
             ></textarea>
           </div>
-          <div class="card-footer">
+          <div className="card-footer">
             <img
               src="http://i.imgur.com/Qr71crq.jpg"
-              class="comment-author-img"
+              className="comment-author-img"
             />
-            <button class="btn btn-sm btn-primary">Post Comment</button>
+            <button className="btn btn-sm btn-primary">Post Comment</button>
           </div>
         </form>
 
-        <div class="card">
-          <div class="card-block">
-            <p class="card-text">
+        <div className="card">
+          <div className="card-block">
+            <p className="card-text">
               With supporting text below as a natural lead-in to additional
               content.
             </p>
           </div>
-          <div class="card-footer">
-            <div class="article-meta">
+          <div className="card-footer">
+            <div className="article-meta">
               <WritterInfo />
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-block">
-            <p class="card-text">
+        <div className="card">
+          <div className="card-block">
+            <p className="card-text">
               With supporting text below as a natural lead-in to additional
               content.
             </p>
           </div>
-          <div class="card-footer">
-            <div class="article-meta">
+          <div className="card-footer">
+            <div className="article-meta">
               <WritterInfo />
             </div>
-            <span class="mod-options">
-              <i class="ion-edit"></i>
-              <i class="ion-trash-a"></i>
+            <span className="mod-options">
+              <i className="ion-edit"></i>
+              <i className="ion-trash-a"></i>
             </span>
           </div>
         </div>

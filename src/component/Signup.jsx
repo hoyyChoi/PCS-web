@@ -29,34 +29,34 @@ const Signup = ({setAuth}) => {
 
 
   return (
-    <div class="auth-page">
-    <div class="container page">
-        <div class="row">
+    <div className="auth-page">
+    <div className="container page">
+        <div className="row">
 
-            <div class="col-md-6 offset-md-3 col-xs-12">
-                <h1 class="text-xs-center">Sign up</h1>
-                <p class="text-xs-center">
+            <div className="col-md-6 offset-md-3 col-xs-12">
+                <h1 className="text-xs-center">Sign up</h1>
+                <p className="text-xs-center">
                     <a href="/login">Have an account?</a>
                 </p>
 
-                <ul class="error-messages">
+                <ul className="error-messages">
                     <li>That email is already taken</li>
                 </ul>
 
                 <form onSubmit={(e)=>handleSubmit(e)}>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="Your Name"
+                    <fieldset className="form-group">
+                        <input className="form-control form-control-lg" type="text" placeholder="Your Name"
                         value={username}  onChange={(event)=>{setUsername(event.currentTarget.value)}}/>
                     </fieldset>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="email" placeholder="Email"
+                    <fieldset className="form-group">
+                        <input className="form-control form-control-lg" type="email" placeholder="Email"
                         value={email} onChange={(event)=>{setEmail(event.currentTarget.value)}}/>
                     </fieldset>
-                    <fieldset class="form-group">
-                        <input class="form-control form-control-lg" type="password" placeholder="Password"
+                    <fieldset className="form-group">
+                        <input className="form-control form-control-lg" type="password" placeholder="Password"
                         value={password} onChange={(event)=>{setPassword(event.currentTarget.value)}}/>
                     </fieldset>
-                    <button class="btn btn-lg btn-primary pull-xs-right" type="submit" 
+                    <button className="btn btn-lg btn-primary pull-xs-right" type="submit" 
                      >
                         Sign up
                     </button>

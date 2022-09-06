@@ -4,7 +4,7 @@ import ArticleContents from './ArticleContents'
 
 const ArticleContainer = () => {
   return (
-    <div class="container page">
+    <div className="container page">
 
     <ArticleContents />
     <ArticleComment />

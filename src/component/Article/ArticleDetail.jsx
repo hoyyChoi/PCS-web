@@ -5,7 +5,7 @@ import ArticleTitle from './ArticleTitle'
 
 const ArticleDetail = () => {
   return (
-    <div class="article-page">
+    <div className="article-page">
     <ArticleTitle />
     
     <ArticleContainer />
