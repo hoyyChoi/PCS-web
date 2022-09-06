@@ -2,6 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { postLoginUser } from '../remote'
+import { userState } from '../atoms/auth'
+import { useRecoilState } from 'recoil'
 
 const Signin = ({setAuth}) => {
 
@@ -11,20 +13,29 @@ const Signin = ({setAuth}) => {
         navigate('/')
     }
 
+
+
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+    const [user,setUserState] = useRecoilState(userState)
 
+    
     const handleSubmit = (e)=>{
         e.preventDefault()
 
         postLoginUser({email,password})
-        .then(res=>
-            console.log(res)
+        .then(async(res)=>{
+            await setUserState(res.data.user)
+            console.log(user)
+        }
         ).catch(err=>
             console.log(err)
         )
     }
 
+   
+    
+    
     
   return (
     <div class="auth-page">

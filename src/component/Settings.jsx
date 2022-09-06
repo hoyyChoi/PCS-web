@@ -15,17 +15,17 @@ const Settings = ({setAuth}) => {
     const [username,setUsername]=useState('');
     const [email,setEmail]=useState('');
     
-    const handleSubmit = (e)=>{
-        e.preventDefault()
+    // const handleSubmit = (e)=>{
+    //     e.preventDefault()
 
-        getLoginUser()
-        .then(res=>
-            console.log(res)
+    //     getLoginUser()
+    //     .then(res=>
+    //         console.log(res)
             
-        ).catch(err=>
-            console.log(err)
-        )
-    }
+    //     ).catch(err=>
+    //         console.log(err)
+    //     )
+    // }
 
 
   return (
