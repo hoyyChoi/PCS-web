@@ -2,8 +2,8 @@ import React from 'react'
 
 const ArticleContents = () => {
   return (
-    <div class="row article-content">
-    <div class="col-md-12">
+    <div className="row article-content">
+    <div className="col-md-12">
         <p>
             Web development technologies have evolved at an incredible clip over the past few years.
         </p>

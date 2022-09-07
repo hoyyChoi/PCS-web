@@ -6,3 +6,15 @@ export const authState = atom({
     default: false
   });
 
+
+export const userState = atom({
+  key: 'src/atoms/auth.jsx-userState', 
+  default: {
+    username:'',
+    email:'',
+    token:'',
+    bio:null,
+    image:null
+  }
+})
+

@@ -24,30 +24,30 @@ const Navbar = () => {
 
   
   return (
-    <nav class="navbar navbar-light">
-      <div class="container">
-        <Link class="navbar-brand" to='/'>
+    <nav className="navbar navbar-light">
+      <div className="container">
+        <Link className="navbar-brand" to='/'>
           conduit
         </Link>
 
-        <ul class="nav navbar-nav pull-xs-right">
+        <ul className="nav navbar-nav pull-xs-right">
           {auth ? (
             <div>
-              <li class="nav-item">
-                <Link class="nav-link active" to='/'>Home</Link>
+              <li className="nav-item">
+                <Link className="nav-link active" to='/'>Home</Link>
               </li>
-              <li class="nav-item">
-              <Link class="nav-link" to='/editor'>
-                  <i class="ion-compose"></i>&nbsp;New Article
-              </Link>
-              </li>
-              <li class="nav-item">
-              <Link class="nav-link" to='/settings'>
-                  <i class="ion-compose"></i>&nbsp;Settings
+              <li className="nav-item">
+              <Link className="nav-link" to='/editor'>
+                  <i className="ion-compose"></i>&nbsp;New Article
               </Link>
               </li>
               <li className="nav-item">
-                  <Link class="nav-link active" to='/a'>
+              <Link className="nav-link" to='/settings'>
+                  <i className="ion-compose"></i>&nbsp;Settings
+              </Link>
+              </li>
+              <li className="nav-item">
+                  <Link className="nav-link active" to='/a'>
                       username
                   </Link>
               </li>
@@ -55,17 +55,17 @@ const Navbar = () => {
           ) : (
             <div>
               <li className="nav-item">
-                  <Link class="nav-link active" to='/'>
+                  <Link className="nav-link active" to='/'>
                       Home
                   </Link>
               </li>
               <li className="nav-item">
-                  <Link class="nav-link" to='/login'>
+                  <Link className="nav-link" to='/login'>
                       Sign in
                   </Link>
               </li>
               <li className="nav-item">
-                  <Link class="nav-link" to='/register'>
+                  <Link className="nav-link" to='/register'>
                       Sign up
                   </Link>
               </li>
@@ -82,8 +82,8 @@ export default Navbar;
 // {auth
 //     ? isLoggedIn.map((data) => {
 //         return (
-//           <li class="nav-item">
-//             <a class="nav-link active" href="">
+//           <li className="nav-item">
+//             <a className="nav-link active" href="">
 //               {data}
 //             </a>
 //           </li>
@@ -91,8 +91,8 @@ export default Navbar;
 //       })
 //     : notLoggedIn.map((data) => {
 //         return (
-//           <li class="nav-item">
-//             <a class="nav-link active" href="/login">
+//           <li className="nav-item">
+//             <a className="nav-link active" href="/login">
 //               {data}
 //             </a>
 //           </li>

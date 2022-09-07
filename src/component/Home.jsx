@@ -5,26 +5,26 @@ import Populartags from './Populartags'
 const Home = ({auth}) => {
 
   return (
-    <div class="home-page">
+    <div className="home-page">
 
-    <div class="banner" style={auth?{display:'none'}:{display:'flex'}}>
-        <div class="container">
-            <h1 class="logo-font">conduit</h1>
+    <div className="banner" style={auth?{display:'none'}:{display:'flex'}}>
+        <div className="container">
+            <h1 className="logo-font">conduit</h1>
             <p>A place to share your knowledge.</p>
         </div>
     </div>
 
-    <div class="container page">
-        <div class="row">
+    <div className="container page">
+        <div className="row">
 
-            <div class="col-md-9">
-                <div class="feed-toggle">
-                    <ul class="nav nav-pills outline-active">
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="" style={auth?{display:'flex'}:{display:'none'}}>Your Feed</a>
+            <div className="col-md-9">
+                <div className="feed-toggle">
+                    <ul className="nav nav-pills outline-active">
+                        <li className="nav-item">
+                            <a className="nav-link disabled" href="" style={auth?{display:'flex'}:{display:'none'}}>Your Feed</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="">Global Feed</a>
+                        <li className="nav-item">
+                            <a className="nav-link active" href="">Global Feed</a>
                         </li>
                     </ul>
                 </div>

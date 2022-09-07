@@ -3,20 +3,20 @@ import WritterInfo from "../WritterInfo";
 
 const ArticleTitle = () => {
   return (
-    <div class="banner">
-      <div class="container">
+    <div className="banner">
+      <div className="container">
         <h1>How to build webapps that scale</h1>
 
-        <div class="article-meta">
+        <div className="article-meta">
           <WritterInfo />
-          <button class="btn btn-sm btn-outline-secondary">
-            <i class="ion-plus-round"></i>
-            &nbsp; Follow Eric Simons <span class="counter">(10)</span>
+          <button className="btn btn-sm btn-outline-secondary">
+            <i className="ion-plus-round"></i>
+            &nbsp; Follow Eric Simons <span className="counter">(10)</span>
           </button>
           &nbsp;&nbsp;
-          <button class="btn btn-sm btn-outline-primary">
-            <i class="ion-heart"></i>
-            &nbsp; Favorite Post <span class="counter">(29)</span>
+          <button className="btn btn-sm btn-outline-primary">
+            <i className="ion-heart"></i>
+            &nbsp; Favorite Post <span className="counter">(29)</span>
           </button>
         </div>
       </div>
