@@ -2,17 +2,18 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { getLoginUser } from '../remote'
-import { useRecoilState } from 'recoil'
-import { userState } from '../atoms/auth'
+import { useRecoilState,useSetRecoilState } from 'recoil'
+import { authState, userState } from '../atoms/auth'
 import { useRecoilValue } from 'recoil'
 import { putLoginUser } from '../remote'
 
-const Settings = ({setAuth}) => {
+const Settings = () => {
 
     let navigate = useNavigate()
     
     
     const [user,setUser]= useRecoilState(userState)
+    const setAuth = useSetRecoilState(authState)
 
     const [username1,setUsername]=useState(user.username)
     const [useremail,setUserEmail] = useState(user.email)

@@ -1,26 +1,29 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { postRegisterUser } from '../remote'
+import { useRecoilState,useSetRecoilState } from 'recoil'
+import { authState,userState } from '../atoms/auth'
 
-const Signup = ({setAuth}) => {
+const Signup = () => {
 
     let navigate = useNavigate()
-    const registerUser = () =>{
-        setAuth(true)
-        navigate('/')
-    }
+   
 
     const [email,setEmail]=useState('');
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
+
+    const [user,setUserState] = useRecoilState(userState)
+    const setAuth = useSetRecoilState(authState)
     
     const handleSubmit=(e)=>{
         e.preventDefault();
        
         postRegisterUser({username,email,password})
         .then(res=>{
-            
-            console.log(res);
+            setUserState(res.data.user)
+            setAuth(true)
+            navigate('/')
            
         })
         .catch((err)=>console.log(err));
