@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRecoilState,useRecoilValue } from 'recoil'
+import { profileState,userState } from '../atoms/auth'
+import { getProfile } from '../remote'
 import Article from './ArticleList'
 
 const Profile = () => {
-  return (
+    
+    const [profile,setProfile] = useRecoilState(profileState)
+    const user = useRecoilValue(userState)
+  
+  
+
+    useEffect(()=>{
+        getProfile(user.username)
+    .then((res)=>{
+        setProfile(res.data.profile)
+    }).catch((err)=>{
+        console.log(err)
+    })
+    },[])
+  
+    return (
     <div className="profile-page">
 
     <div className="user-info">
@@ -10,11 +28,10 @@ const Profile = () => {
             <div className="row">
 
                 <div className="col-xs-12 col-md-10 offset-md-1">
-                    <img src="http://i.imgur.com/Qr71crq.jpg" className="user-img"/>
-                    <h4>Eric Simons</h4>
+                    <img src={profile.image} className="user-img"/>
+                    <h4>{profile.username}</h4>
                     <p>
-                        Cofounder @GoThinkster, lived in Aol's HQ for a few months, kinda looks like Peeta from the
-                        Hunger Games
+                        {profile.bio}
                     </p>
                     <button className="btn btn-sm btn-outline-secondary action-btn">
                         <i className="ion-plus-round"></i>

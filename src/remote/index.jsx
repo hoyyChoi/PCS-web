@@ -69,5 +69,22 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
   }}}
 */
   const putLoginUser=(user)=>conduitAxios.put('/user',{user},{headers:{authorization:`Bearer ${user.token}`}});
-export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser};
 
+
+
+// profile
+
+/**
+ @param {string} username
+ @returns {{profile: {
+    username: string;
+    bio: string;
+    image: string;
+    following: true;
+  }}}
+ */
+
+  const getProfile=(username)=>conduitAxios.get(`/profiles/${username}`)
+
+
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile};
