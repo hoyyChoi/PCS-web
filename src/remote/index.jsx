@@ -6,6 +6,7 @@ const conduitAxios = axios.create({
     baseURL : 'https://conduit.productionready.io/api'
 });
 
+
 /**
  @param {{user: {
     email: string;
@@ -67,6 +68,6 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
     image: string
   }}}
 */
-  const putLoginUser=(user)=>conduitAxios.put('/user',{user});
+  const putLoginUser=(user)=>conduitAxios.put('/user',{user},{headers:{authorization:`Bearer ${user.token}`}});
 export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser};
 
