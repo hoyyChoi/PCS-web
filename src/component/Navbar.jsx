@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { authState } from '../atoms/auth'
+import { authState, userState } from '../atoms/auth'
 // <li> 테그에 있는 데이터들을 배열로 이동 시킨후, map 내장함수를 이용해서 뿌려준다
 // 로그인 했을떄랑 안했을때 보여지는게 다른데 그 부분을 배열로 표현 할 수 있는지.
 
@@ -20,7 +20,7 @@ const Navbar = () => {
   const isLoggedIn = ["Home", "New Article", "Settings", "username"];
 
   const auth = useRecoilValue(authState)
- 
+  const user = useRecoilValue(userState)  
 
   
   return (
@@ -48,7 +48,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                   <Link className="nav-link active" to='/a'>
-                      username
+                      {user.username}
                   </Link>
               </li>
             </div>

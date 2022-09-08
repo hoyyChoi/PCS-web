@@ -44,7 +44,7 @@ const ArticleComment = () => {
             </p>
           </div>
           <div className="card-footer">
-            <div className="article-meta">
+            <div className="article-meta" style={{'display':'inline'}}>
               <WritterInfo />
             </div>
             <span className="mod-options">

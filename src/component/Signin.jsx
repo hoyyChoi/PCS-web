@@ -8,11 +8,7 @@ import { useRecoilState } from 'recoil'
 const Signin = ({setAuth}) => {
 
     let navigate = useNavigate()
-    const loginUser = () =>{
-        setAuth(true)
-        navigate('/')
-    }
-
+    
 
 
     const [email,setEmail]=useState('');
@@ -24,9 +20,10 @@ const Signin = ({setAuth}) => {
         e.preventDefault()
 
         postLoginUser({email,password})
-        .then(async(res)=>{
-            await setUserState(res.data.user)
-            console.log(user)
+        .then((res)=>{
+            setUserState(res.data.user)
+            setAuth(true)
+            navigate('/')
         }
         ).catch(err=>
             console.log(err)
@@ -51,7 +48,7 @@ const Signin = ({setAuth}) => {
 
                 <form onSubmit={(e)=>handleSubmit(e)}>
                     <fieldset className="form-group">
-                        <input className="form-control form-control-lg" type="email" placeholder="Email" value={email} onChange={(event)=>setEmail(event.currentTarget.value)}/>
+                        <input className="form-control form-control-lg" type="email" placeholder="Email" value={email} onChange={(event)=>setEmail(event.currentTarget.value)}/> 
                     </fieldset>
                     <fieldset className="form-group">
                         <input className="form-control form-control-lg" type="password" placeholder="Password" value={password} onChange={(event)=>setPassword(event.currentTarget.value)}/>

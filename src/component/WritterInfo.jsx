@@ -3,7 +3,7 @@ import React from "react";
 const WritterInfo = () => {
   return (
     
-      <div>
+      <div style={{'display':'inline'}}>
           <a href="">
             <img src="http://i.imgur.com/Qr71crq.jpg" />
           </a>
