@@ -2,10 +2,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { postLoginUser } from '../remote'
-import { userState } from '../atoms/auth'
-import { useRecoilState } from 'recoil'
+import { authState,userState } from '../atoms/auth'
+import { useRecoilState,useSetRecoilState } from 'recoil'
 
-const Signin = ({setAuth}) => {
+const Signin = () => {
 
     let navigate = useNavigate()
     
@@ -14,6 +14,9 @@ const Signin = ({setAuth}) => {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [user,setUserState] = useRecoilState(userState)
+    const setAuth = useSetRecoilState(authState)
+
+    
 
     
     const handleSubmit = (e)=>{
