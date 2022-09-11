@@ -14,7 +14,16 @@ export const userState = atom({
     email:'',
     token:'',
     bio:null,
-    image:null
+    image:'https://api.realworld.io/images/smiley-cyrus.jpeg',
   }
 })
 
+export const profileState = atom({
+  key: 'src/atoms/auth.jsx-profileState',
+  default :{
+    username:'',
+    bio:null,
+    image:'https://api.realworld.io/images/smiley-cyrus.jpeg',
+    following:false
+  }
+})
