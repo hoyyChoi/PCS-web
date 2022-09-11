@@ -1,8 +1,31 @@
 import React from 'react'
 import ArticleList from './ArticleList'
 import Populartags from './Populartags'
+import { useRecoilValue } from 'recoil'
+import { authState } from '../atoms/auth'
+import { useEffect,useState } from 'react'
+import { getArticles } from '../remote/index'
 
-const Home = ({auth}) => {
+const Home = () => {
+    let [articleData,setArticleData] = useState([])
+    const auth = useRecoilValue(authState)
+    
+    useEffect(()=>{
+        getArticles()
+        .then(res=>{
+            setArticleData(res.data.articles)
+        }).catch(err=>{
+            console.log(err)
+        })
+    },[])
+    const tag = []
+    for(let i=0; i<articleData.length; i++){
+        for(let k=0; k<articleData[i].tagList.length; k++){
+            tag.push(articleData[i].tagList[k])
+        } 
+    }
+   const tags = [...new Set(tag)]
+
 
   return (
     <div className="home-page">
@@ -29,13 +52,11 @@ const Home = ({auth}) => {
                     </ul>
                 </div>
 
-                <ArticleList />
-                <ArticleList />
-                <ArticleList />
+                {articleData.map((data)=><ArticleList data={data}/>)}
+
+                
             </div>
-
-            <Populartags />
-
+            <Populartags tags={tags} />
         </div>
     </div>
 

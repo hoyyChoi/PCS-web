@@ -17,6 +17,8 @@ const Settings = () => {
 
     const [username1,setUsername]=useState(user.username)
     const [useremail,setUserEmail] = useState(user.email)
+    const [biotext,setBiotext] = useState(user.bio)
+    
 
 
     const logOut = () =>{
@@ -31,7 +33,7 @@ const Settings = () => {
         // setUser({...user,username:username1})
         // console.log(user)
 
-        putLoginUser({...user,username:username1,email:useremail})
+        putLoginUser({...user,username:username1,email:useremail,bio:biotext})
         .then(res=>
             setUser(res.data.user)
         
@@ -53,14 +55,14 @@ const Settings = () => {
                 <form onSubmit={(e)=>handleSubmit(e)}>
                     <fieldset>
                         <fieldset className="form-group">
-                            <input className="form-control" type="text" placeholder="URL of profile picture"/>
+                            <input className="form-control" type="text" placeholder="URL of profile picture" />
                         </fieldset>
                         <fieldset className="form-group">
                             <input className="form-control form-control-lg" type="text" placeholder="User Name" value={username1} onChange={(e)=>setUsername(e.currentTarget.value)} />
                         </fieldset>
                         <fieldset className="form-group">
                             <textarea className="form-control form-control-lg" rows="8"
-                                      placeholder="Short bio about you"></textarea>
+                                      placeholder="Short bio about you" value={biotext} onChange={(e)=>setBiotext(e.currentTarget.value)}></textarea>
                         </fieldset>
                         <fieldset className="form-group">
                             <input className="form-control form-control-lg" type="email" placeholder="Email" value={useremail} onChange={(e)=>setUserEmail(e.currentTarget.value)}/>

@@ -9,15 +9,13 @@ const Profile = () => {
     const [profile,setProfile] = useRecoilState(profileState)
     const user = useRecoilValue(userState)
   
-  
-
     useEffect(()=>{
         getProfile(user.username)
-    .then((res)=>{
-        setProfile(res.data.profile)
-    }).catch((err)=>{
-        console.log(err)
-    })
+        .then((res)=>{
+            setProfile(res.data.profile)
+        }).catch((err)=>{
+            console.log(err)
+         })
     },[])
   
     return (
