@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { authState, userState } from '../atoms/auth'
+import { getProfile } from "../remote/index";
+import { profileState } from "../atoms/auth";
+import { useNavigate } from "react-router-dom";
 // <li> 테그에 있는 데이터들을 배열로 이동 시킨후, map 내장함수를 이용해서 뿌려준다
 // 로그인 했을떄랑 안했을때 보여지는게 다른데 그 부분을 배열로 표현 할 수 있는지.
 
@@ -21,6 +24,19 @@ const Navbar = () => {
 
   const auth = useRecoilValue(authState)
   const user = useRecoilValue(userState)  
+  const [profile,setProfile] = useRecoilState(profileState)
+  const navigate = useNavigate()
+
+  const spaceProfile = () =>{
+    getProfile(user.username)
+    .then((res)=>{
+        setProfile(res.data.profile)
+        navigate('/a')
+    }).catch((err)=>{
+        console.log(err)
+     })
+  }
+    
 
   
   return (
@@ -47,9 +63,9 @@ const Navbar = () => {
               </Link>
               </li>
               <li className="nav-item">
-                  <Link className="nav-link active" to='/a'>
+                  <div className="nav-link active" onClick={spaceProfile} style={{cursor:'pointer'}}>
                       {user.username}
-                  </Link>
+                  </div>
               </li>
             </div>
           ) : (

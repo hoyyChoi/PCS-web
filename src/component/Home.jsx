@@ -11,7 +11,7 @@ const Home = () => {
     const auth = useRecoilValue(authState)
     
     useEffect(()=>{
-        getArticles()
+        getArticles('Gerome')
         .then(res=>{
             setArticleData(res.data.articles)
         }).catch(err=>{

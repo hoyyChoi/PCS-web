@@ -118,5 +118,5 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
 }}
    */
 
-const getArticles = () => conduitAxios.get('/articles')
+const getArticles = (author) => conduitAxios.get(`/articles/?author=${author}&limit=20&offset=0`)
   export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles};
