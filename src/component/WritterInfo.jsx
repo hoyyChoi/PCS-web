@@ -1,17 +1,17 @@
 import React from "react";
 
-const WritterInfo = () => {
+const WritterInfo = ({data}) => {
   return (
     
       <div style={{'display':'inline'}}>
           <a href="">
-            <img src="http://i.imgur.com/Qr71crq.jpg" />
+            <img src={data.author.image} />
           </a>
           <div className="info">
             <a href="" className="author">
-              Eric Simons
+              {data.author.username}
             </a>
-            <span className="date">January 20th</span>
+            <span className="date">{data.createdAt}</span>
           </div>
       </div>
   );

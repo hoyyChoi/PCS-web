@@ -1,15 +1,18 @@
 import React from 'react'
 
-const Populartags = () => {
+const Populartags = ({tags}) => {
+
   return (
     <div className="col-md-3">
         <div className="sidebar">
             <p>Popular Tags</p>
 
             <div className="tag-list">
-                <a href="" className="tag-pill tag-default">programming</a>
-                <a href="" className="tag-pill tag-default">javascript</a>
-                <a href="" className="tag-pill tag-default">emberjs</a>
+               {tags.map((tagsData)=>
+               <a href="" className="tag-pill tag-default">{tagsData}</a>
+               )}
+                
+                
             </div>
         </div>
     </div>

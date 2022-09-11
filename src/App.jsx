@@ -20,10 +20,10 @@ function App() {
     <div>
       <Navbar/>
         <Routes> 
-          <Route path='/' element={<Home auth={auth}/>}/>
-          <Route path='/login' element={<Signin setAuth={setAuth} />}/>
-          <Route path='/register' element={<Signup setAuth={setAuth}/>}/>
-          <Route path='/settings' element={<Settings setAuth={setAuth}/>}/>
+          <Route path='/' element={<Home />}/>
+          <Route path='/login' element={<Signin />}/>
+          <Route path='/register' element={<Signup />}/>
+          <Route path='/settings' element={<Settings />}/>
           <Route path='/editor' element={<Newarticle />}/> 
           <Route path='/a' element={<Profile />}/> 
           <Route path='/b' element={<ArticleDetail />}/> 

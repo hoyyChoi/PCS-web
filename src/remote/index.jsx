@@ -65,7 +65,7 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
     token: string;
     username: string;
     bio: string;
-    image: string
+    image: string;
   }}}
 */
   const putLoginUser=(user)=>conduitAxios.put('/user',{user},{headers:{authorization:`Bearer ${user.token}`}});
@@ -86,5 +86,37 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
 
   const getProfile=(username)=>conduitAxios.get(`/profiles/${username}`)
 
+  // profile [post] ,[delete] 부분
 
-  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile};
+
+  //Article
+
+  /**
+   @param {string} author
+   @returns {{articles: [
+    {
+      slug: string;
+  title: string;
+  description: string;
+  body: string;
+  tagList: [
+    string
+  ];
+  createdAt: 2022-09-11T06:38:57.899Z;
+  updatedAt: 2022-09-11T06:38:57.899Z;
+  favorited: true;
+  favoritesCount: 0;
+  author: {
+    username: string;
+    bio: string;
+    image: string;
+    following: true;
+      }
+    }
+  ],
+  articlesCount: 0;
+}}
+   */
+
+const getArticles = () => conduitAxios.get('/articles')
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles};
