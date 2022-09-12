@@ -26,13 +26,13 @@ const WritterInfo = ({data}) => {
     
       <div style={{'display':'inline'}}>
           <a onClick={spaceProfile} style={{cursor:'pointer'}}>
-            <img src={data.author.image} />
+            <img src={data&&data.author.image} />
           </a>
           <div className="info">
             <a onClick={spaceProfile} className="author" style={{cursor:'pointer'}}>
-              {data.author.username}
+              {data&&data.author.username}
             </a>
-            <span className="date">{data.createdAt}</span>
+            <span className="date">{data&&data.createdAt}</span>
           </div>
       </div>
   );

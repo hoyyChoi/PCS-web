@@ -3,21 +3,29 @@ import { useState } from 'react'
 import { createArticle } from '../remote/index'
 import { useRecoilValue } from 'recoil'
 import { userState } from '../atoms/auth'
+import { useRecoilState } from 'recoil'
+import { slugState } from '../atoms/auth'
+import { useNavigate } from 'react-router-dom'
 
 const Newarticle = () => {
 
     const user = useRecoilValue(userState)
+    const [slug,setSlug] = useRecoilState(slugState)
+
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
     const [body,setBody] = useState('')
     const [tag,setTag] = useState([''])
+
+    const navigate =useNavigate()
 
     const submitArticle = (e)=>{
         e.preventDefault()
 
         createArticle({title,description,body,tag},{user})
         .then(res=>{
-            console.log(res)
+            setSlug(res.data.article.slug)
+            navigate('/b')
         }).catch(err=>{
             console.log(err)
         })

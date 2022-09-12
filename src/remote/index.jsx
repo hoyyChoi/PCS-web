@@ -129,9 +129,9 @@ const getArticles = (author) => conduitAxios.get(`/articles/?author=${author}&li
     tagList: [
       string
     ];}
-}} newArticle
+}} article
 
-@returns {{articles:
+@returns {{article:
   {
     slug: string;
 title: string;
@@ -155,4 +155,31 @@ author: {
  */
 
 const createArticle = (article,{user}) => conduitAxios.post('/articles',{article},{headers:{authorization:`Bearer ${user.token}`}})
-  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles,createArticle};
+
+/**
+ @param {string} slug
+ @returns {{article:
+  {
+    slug: string;
+title: string;
+description: string;
+body: string;
+tagList: [
+  string
+];
+createdAt: 2022-09-11T06:38:57.899Z;
+updatedAt: 2022-09-11T06:38:57.899Z;
+favorited: true;
+favoritesCount: 0;
+author: {
+  username: string;
+  bio: string;
+  image: string;
+  following: true;
+    }
+  }
+}}
+ */
+const getSlugArticle = (slug) => conduitAxios.get(`/articles/${slug}`)
+
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles,createArticle,getSlugArticle};

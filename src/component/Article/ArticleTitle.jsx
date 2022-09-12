@@ -1,14 +1,15 @@
 import React from "react";
 import WritterInfo from "../WritterInfo";
 
-const ArticleTitle = () => {
+const ArticleTitle = ({data}) => {
+
   return (
     <div className="banner">
       <div className="container">
-        <h1>How to build webapps that scale</h1>
+        <h1>{data&&data.title}</h1>
 
         <div className="article-meta">
-          <WritterInfo />
+          <WritterInfo data={data}/>
           <button className="btn btn-sm btn-outline-secondary">
             <i className="ion-plus-round"></i>
             &nbsp; Follow Eric Simons <span className="counter">(10)</span>

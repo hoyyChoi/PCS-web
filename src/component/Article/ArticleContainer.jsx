@@ -2,11 +2,11 @@ import React from 'react'
 import ArticleComment from './ArticleComment'
 import ArticleContents from './ArticleContents'
 
-const ArticleContainer = () => {
+const ArticleContainer = ({data}) => {
   return (
     <div className="container page">
 
-    <ArticleContents />
+    <ArticleContents data={data}/>
     <ArticleComment />
     <hr/>
 
