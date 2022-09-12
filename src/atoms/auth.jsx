@@ -28,3 +28,12 @@ export const profileState = atom({
   }
 })
 
+// export const newArticleState = atom({
+//   key: 'src/atoms/auth.jsx-newArticleState',
+//   default:{
+//     title: '',
+//     description: '',
+//     body: '',
+//     tagList:[]
+//   }
+// })

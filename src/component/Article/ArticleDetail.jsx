@@ -6,12 +6,9 @@ import ArticleTitle from './ArticleTitle'
 const ArticleDetail = () => {
   return (
     <div className="article-page">
-    <ArticleTitle />
-    
-    <ArticleContainer />
-   
-
-</div>
+      <ArticleTitle />
+      <ArticleContainer />
+    </div>
   )
 }
 

@@ -1,6 +1,7 @@
 import axios from "axios";
-
 // @ts-check
+
+
 
 const conduitAxios = axios.create({
     baseURL : 'https://conduit.productionready.io/api'
@@ -119,4 +120,39 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
    */
 
 const getArticles = (author) => conduitAxios.get(`/articles/?author=${author}&limit=20&offset=0`)
-  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles};
+
+/**
+ @param {{article: {
+    title: string;
+    description: string;
+    body: string;
+    tagList: [
+      string
+    ];}
+}} newArticle
+
+@returns {{articles:
+  {
+    slug: string;
+title: string;
+description: string;
+body: string;
+tagList: [
+  string
+];
+createdAt: 2022-09-11T06:38:57.899Z;
+updatedAt: 2022-09-11T06:38:57.899Z;
+favorited: true;
+favoritesCount: 0;
+author: {
+  username: string;
+  bio: string;
+  image: string;
+  following: true;
+    }
+  }
+}}
+ */
+
+const createArticle = (article,{user}) => conduitAxios.post('/articles',{article},{headers:{authorization:`Bearer ${user.token}`}})
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles,createArticle};
