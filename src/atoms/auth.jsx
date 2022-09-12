@@ -28,6 +28,11 @@ export const profileState = atom({
   }
 })
 
+export const slugState = atom({
+  key:'src/atoms/auth.jsx-slugState',
+  default:''
+})
+
 // export const newArticleState = atom({
 //   key: 'src/atoms/auth.jsx-newArticleState',
 //   default:{
