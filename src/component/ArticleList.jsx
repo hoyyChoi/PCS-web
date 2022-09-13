@@ -1,7 +1,17 @@
 import React from 'react'
+import { useRecoilState } from 'recoil'
+import { useNavigate } from 'react-router-dom'
+import { slugState } from '../atoms/auth'
 import WritterInfo from './WritterInfo'
 
 const ArticleList = ({data}) => {
+
+  const navigate = useNavigate()
+  const [slug,setSlug] = useRecoilState(slugState)
+  const spaceArticle = () =>{
+    setSlug(data.slug)
+    navigate('/b')
+  }
 
   // data.slug를 상태에 업데이트를 시켜서 Api 연결 get slug -> ARTICLE DETAIL 컴포넌트 -> 업데이트된 정보를  뿌려준다.
   return (
@@ -12,11 +22,11 @@ const ArticleList = ({data}) => {
                     <i className="ion-heart"></i> 
             </button> 
     </div>
-    <a href="" className="preview-link">
+    <div onClick={spaceArticle} className="preview-link">
         <h1>{data.title}</h1>
         <p>{data.description}</p>
         <span>Read more...</span>
-    </a>
+    </div>
 </div>
   )
 }
