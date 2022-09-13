@@ -33,6 +33,8 @@ export const slugState = atom({
   default:''
 })
 
+
+
 // export const newArticleState = atom({
 //   key: 'src/atoms/auth.jsx-newArticleState',
 //   default:{
