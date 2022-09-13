@@ -182,4 +182,27 @@ author: {
  */
 const getSlugArticle = (slug) => conduitAxios.get(`/articles/${slug}`)
 
-  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles,createArticle,getSlugArticle};
+
+
+/**
+ @param {string} slug
+ @returns {{
+  comments: [
+    {
+      id: 0;
+      createdAt: 2022-09-13T09:11:17.036Z;
+      updatedAt: 2022-09-13T09:11:17.036Z;
+      body: string;
+      author: {
+        username: string;
+        bio: string;
+        image: string;
+        following: true
+      }
+    }
+  ]
+}}
+ */
+
+const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`)
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles,createArticle,getSlugArticle,getComment};

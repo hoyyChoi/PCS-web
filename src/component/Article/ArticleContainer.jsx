@@ -1,17 +1,16 @@
 import React from 'react'
 import ArticleComment from './ArticleComment'
 import ArticleContents from './ArticleContents'
+import ShowComment from './ShowComment'
+import WriteCommet from './WriteCommet'
 
 const ArticleContainer = ({data}) => {
   return (
     <div className="container page">
 
     <ArticleContents data={data}/>
-    <ArticleComment />
-    <hr/>
-
-
-   
+    <WriteCommet />
+    <ShowComment />
 
 </div>
   )

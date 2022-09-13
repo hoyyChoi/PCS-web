@@ -22,7 +22,7 @@ const ArticleList = ({data}) => {
                     <i className="ion-heart"></i> 
             </button> 
     </div>
-    <div onClick={spaceArticle} className="preview-link">
+    <div onClick={spaceArticle} className="preview-link" style={{cursor:'pointer'}}>
         <h1>{data.title}</h1>
         <p>{data.description}</p>
         <span>Read more...</span>

@@ -8,7 +8,7 @@ const ArticleContents = ({data}) => {
             {data&&data.body}
         </p>
         <div className="tag-list">
-               {data.tagList.map((data)=>
+               {data&&data.tagList.map((data)=>
                 <p className="tag-pill tag-default">{data}</p>
                )}
         </div>
