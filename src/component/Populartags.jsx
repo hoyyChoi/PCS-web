@@ -11,8 +11,6 @@ const Populartags = ({tags}) => {
                {tags.map((tagsData)=>
                <a href="" className="tag-pill tag-default">{tagsData}</a>
                )}
-                
-                
             </div>
         </div>
     </div>
