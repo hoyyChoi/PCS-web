@@ -18,7 +18,7 @@ const ShowComment = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [comments]);
 
   return (
     <div className="row">

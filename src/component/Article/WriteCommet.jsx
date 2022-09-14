@@ -16,6 +16,7 @@ const WriteCommet = () => {
     postComment(slug,{body},{user})
     .then(res=>{
         console.log(res)
+        //rerender 되면서 코멘트 부분이 추가됨. 페이지 전환
     }).catch(err=>{
         console.log(err)
     })

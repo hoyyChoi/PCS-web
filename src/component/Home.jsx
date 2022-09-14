@@ -2,16 +2,17 @@ import React from 'react'
 import ArticleList from './ArticleList'
 import Populartags from './Populartags'
 import { useRecoilValue } from 'recoil'
-import { authState } from '../atoms/auth'
+import { authState, userState } from '../atoms/auth'
 import { useEffect,useState } from 'react'
 import { getArticles } from '../remote/index'
 
 const Home = () => {
     let [articleData,setArticleData] = useState([])
     const auth = useRecoilValue(authState)
+    const user = useRecoilValue(userState)
     
     useEffect(()=>{
-        getArticles('Gerome')
+        getArticles({user})
         .then(res=>{
             setArticleData(res.data.articles)
         }).catch(err=>{

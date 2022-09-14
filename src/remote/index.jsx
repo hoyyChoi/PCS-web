@@ -119,7 +119,7 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
 }}
    */
 
-const getArticles = (author) => conduitAxios.get(`/articles/?author=${author}&limit=20&offset=0`)
+const getArticles = ({user}) => conduitAxios.get(`/articles?limit=30&offset=0`,{headers:{authorization:`Bearer ${user.token}`}})
 
 /**
  @param {{article: {
