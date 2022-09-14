@@ -9,10 +9,11 @@ import ArticleList from './ArticleList'
 const Profile = () => {
 
     const profile = useRecoilValue(profileState)
+    const user = useRecoilValue(userState)
     let [articleData,setArticleData] = useState([])
     
     useEffect(()=>{
-       getArticles(profile.username)
+       getArticles(profile.username,{user})
        .then(res=>{
         setArticleData(res.data.articles)
         
