@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useRecoilValue } from 'recoil'
-import { slugState, userState } from '../../atoms/auth'
+import { commentsState, slugState, userState } from '../../atoms/auth'
 import { postComment } from '../../remote/index'
 
 const WriteCommet = () => {
@@ -9,18 +9,21 @@ const WriteCommet = () => {
   const [body,setTextComment] = useState('')
   const slug = useRecoilValue(slugState)
   const user = useRecoilValue(userState)
-   
-  const submitComment = (e) =>{
-    e.preventDefault()
-
-    postComment(slug,{body},{user})
-    .then(res=>{
-        console.log(res)
-        //rerender 되면서 코멘트 부분이 추가됨. 페이지 전환
-    }).catch(err=>{
-        console.log(err)
-    })
-  }
+  let comments = useRecoilValue(commentsState)
+  
+    const submitComment = (e) =>{
+      e.preventDefault()
+  
+      postComment(slug,{body})
+      .then(res=>{
+          comments = [...comments,res.data.comment]
+          console.log(comments)
+          //rerender 되면서 코멘트 부분이 추가됨. 페이지 전환
+      }).catch(err=>{
+          console.log(err)
+      })
+    }
+  
   
 return (
     <div className="row">

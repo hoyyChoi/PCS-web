@@ -33,7 +33,10 @@ export const slugState = atom({
   default:''
 })
 
-
+export const commentsState = atom({
+  key:'src/atoms/auth.jsx-commentsState',
+  default:[]
+})
 
 // export const newArticleState = atom({
 //   key: 'src/atoms/auth.jsx-newArticleState',

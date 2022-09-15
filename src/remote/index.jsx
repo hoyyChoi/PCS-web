@@ -289,7 +289,7 @@ const getSlugArticle = (slug) => conduitAxios.get(`/articles/${slug}`)
   ]
 }}
  */
-const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`)
+const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`,{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
 
 /**
  @param {string} slug
@@ -299,7 +299,7 @@ const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`)
   }
 }} comment
  @returns {{
-  comments: [
+  comment: [
     {
       id: 0;
       createdAt: 2022-09-13T09:11:17.036Z;
@@ -316,6 +316,6 @@ const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`)
 }}
  */
 
-const postComment =(slug,comment,{user}) => conduitAxios.post(`/articles/${slug}/comments`,{comment},{headers:{authorization:`Bearer ${user.token}`}})
+const postComment =(slug,comment) => conduitAxios.post(`/articles/${slug}/comments`,{comment},{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
 
   export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getGlobalLoginArticles,getGlobalArticles,getArticles,getLoginArticles,createArticle,getSlugArticle,getComment,postComment};
