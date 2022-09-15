@@ -22,6 +22,7 @@ const Signup = () => {
         postRegisterUser({username,email,password})
         .then(res=>{
             setUserState(res.data.user)
+            localStorage.setItem("token",res.data.user.token)
             setAuth(true)
             navigate('/')
            

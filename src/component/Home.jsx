@@ -4,7 +4,7 @@ import Populartags from './Populartags'
 import { useRecoilValue } from 'recoil'
 import { authState, userState } from '../atoms/auth'
 import { useEffect,useState } from 'react'
-import { getArticles } from '../remote/index'
+import { getGlobalArticles,getGlobalLoginArticles } from '../remote/index'
 
 const Home = () => {
     let [articleData,setArticleData] = useState([])
@@ -12,13 +12,22 @@ const Home = () => {
     const user = useRecoilValue(userState)
     
     useEffect(()=>{
-        getArticles({user})
+        auth?(getGlobalLoginArticles()
         .then(res=>{
             setArticleData(res.data.articles)
         }).catch(err=>{
             console.log(err)
-        })
-    },[])
+        })):
+        (getGlobalArticles()
+        .then(res=>{
+            setArticleData(res.data.articles)
+        }).catch(err=>{
+            console.log(err)
+        }))
+
+    },[auth])
+
+
     const tag = []
     for(let i=0; i<articleData.length; i++){
         for(let k=0; k<articleData[i].tagList.length; k++){

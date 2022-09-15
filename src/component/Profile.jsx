@@ -1,8 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { useRecoilState,useRecoilValue } from 'recoil'
-import { profileState,userState } from '../atoms/auth'
-import { getProfile } from '../remote'
-import { getArticles } from '../remote/index'
+import { authState, profileState,userState } from '../atoms/auth'
+import { getArticles,getLoginArticles } from '../remote/index'
 import ArticleList from './ArticleList'
 
 
@@ -11,14 +10,23 @@ const Profile = () => {
     const profile = useRecoilValue(profileState)
     const user = useRecoilValue(userState)
     let [articleData,setArticleData] = useState([])
+    const auth = useRecoilValue(authState)
     
     useEffect(()=>{
-       getArticles(profile.username,{user})
+       auth?(getLoginArticles(profile.username)
        .then(res=>{
         setArticleData(res.data.articles)
         
        }).catch(err=>
-        console.log(err))
+        console.log(err)))
+        :
+        (getArticles(profile.username)
+        .then(res=>{
+         setArticleData(res.data.articles)
+         
+        }).catch(err=>
+         console.log(err)))
+        
        
        
         // get을 호출 파라미터로 들어가는게 위에서는 user(나자신이름), or 상대방 이미지 눌렀을때 이름을 전달하는것, api주소
