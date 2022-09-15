@@ -1,24 +1,25 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import { slugState } from "../../atoms/auth";
+import { useRecoilValue,useRecoilState } from "recoil";
+import { commentsState, slugState } from "../../atoms/auth";
 import { getComment } from "../../remote/index";
 import WritterInfo from "../WritterInfo";
 
 const ShowComment = () => {
   const slug = useRecoilValue(slugState);
-  const [comments, setComments] = useState([]);
+  let [comments, setComments] = useRecoilState(commentsState);
 
   useEffect(() => {
     getComment(slug)
       .then((res) => {
-        setComments(res.data.comments);
+        console.log(res.data.comments)
+        setComments(res.data.comments)
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [comments]);
+  }, [comments.length]);
 
   return (
     <div className="row">
