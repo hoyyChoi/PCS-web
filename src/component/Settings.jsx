@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { getLoginUser } from '../remote'
 import { useRecoilState,useSetRecoilState } from 'recoil'
-import { authState, userState } from '../atoms/auth'
+import { authState, userState, profileState } from '../atoms/auth'
 import { useRecoilValue } from 'recoil'
 import { putLoginUser } from '../remote'
 
@@ -14,6 +14,7 @@ const Settings = () => {
     
     const [user,setUser]= useRecoilState(userState)
     const setAuth = useSetRecoilState(authState)
+    const [profile,setProfile] = useRecoilState(profileState)
 
     const [username1,setUsername]=useState(user.username)
     const [useremail,setUserEmail] = useState(user.email)
@@ -22,6 +23,7 @@ const Settings = () => {
 
 
     const logOut = () =>{
+        localStorage.removeItem('token')
         setAuth(false)
         navigate("/")
     }
@@ -34,10 +36,11 @@ const Settings = () => {
         // console.log(user)
 
         putLoginUser({...user,username:username1,email:useremail,bio:biotext})
-        .then(res=>
+        .then(res=>{
             setUser(res.data.user)
-        
-            
+            setProfile(res.data.user)
+            navigate("/a")
+        }
         ).catch(err=>
             console.log(err)
         )

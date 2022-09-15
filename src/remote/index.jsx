@@ -50,7 +50,7 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
     image: string
   }}}
    */
-  const getLoginUser=()=>conduitAxios.get('/user');
+  const getLoginUser=()=>conduitAxios.get('/user',{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}});
   
   
 /**
@@ -92,7 +92,64 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
 
   //Article
 
+   /**
+   @returns {{articles: [
+    {
+      slug: string;
+  title: string;
+  description: string;
+  body: string;
+  tagList: [
+    string
+  ];
+  createdAt: 2022-09-11T06:38:57.899Z;
+  updatedAt: 2022-09-11T06:38:57.899Z;
+  favorited: true;
+  favoritesCount: 0;
+  author: {
+    username: string;
+    bio: string;
+    image: string;
+    following: true;
+      }
+    }
+  ],
+  articlesCount: 0;
+}}
+   */
+
+const getGlobalArticles = () => conduitAxios.get('/articles?limit=30&offset=0')
+
+
   /**
+   @returns {{articles: [
+    {
+      slug: string;
+  title: string;
+  description: string;
+  body: string;
+  tagList: [
+    string
+  ];
+  createdAt: 2022-09-11T06:38:57.899Z;
+  updatedAt: 2022-09-11T06:38:57.899Z;
+  favorited: true;
+  favoritesCount: 0;
+  author: {
+    username: string;
+    bio: string;
+    image: string;
+    following: true;
+      }
+    }
+  ],
+  articlesCount: 0;
+}}
+   */
+
+const getGlobalLoginArticles = () => conduitAxios.get(`/articles?limit=30&offset=0`,{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
+
+/**
    @param {string} author
    @returns {{articles: [
     {
@@ -119,7 +176,36 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
 }}
    */
 
-const getArticles = ({user}) => conduitAxios.get(`/articles?limit=30&offset=0`,{headers:{authorization:`Bearer ${user.token}`}})
+const getArticles = (author) => conduitAxios.get(`/articles?author=${author}&limit=30&offset=0`)
+
+/**
+   @param {string} author
+   @returns {{articles: [
+    {
+      slug: string;
+  title: string;
+  description: string;
+  body: string;
+  tagList: [
+    string
+  ];
+  createdAt: 2022-09-11T06:38:57.899Z;
+  updatedAt: 2022-09-11T06:38:57.899Z;
+  favorited: true;
+  favoritesCount: 0;
+  author: {
+    username: string;
+    bio: string;
+    image: string;
+    following: true;
+      }
+    }
+  ],
+  articlesCount: 0;
+}}
+   */
+
+const getLoginArticles = (author) => conduitAxios.get(`/articles?author=${author}&limit=30&offset=0`,{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
 
 /**
  @param {{article: {
@@ -232,4 +318,4 @@ const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`)
 
 const postComment =(slug,comment,{user}) => conduitAxios.post(`/articles/${slug}/comments`,{comment},{headers:{authorization:`Bearer ${user.token}`}})
 
-  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getArticles,createArticle,getSlugArticle,getComment,postComment};
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getGlobalLoginArticles,getGlobalArticles,getArticles,getLoginArticles,createArticle,getSlugArticle,getComment,postComment};

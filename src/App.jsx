@@ -10,11 +10,29 @@ import Newarticle from './component/Newarticle';
 import Profile from './component/Profile';
 import ArticleDetail from './component/Article/ArticleDetail';
 import {useRecoilState} from 'recoil'
-import {authState} from './atoms/auth'
+import {authState,userState} from './atoms/auth'
+import { useEffect } from 'react';
+import { getLoginUser } from './remote/index';
 
 function App() {
 
   const [auth,setAuth] = useRecoilState(authState)
+  const [user,setUserState] = useRecoilState(userState)
+
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      getLoginUser()
+      .then(res=>{
+        setUserState(res.data.user)
+        setAuth(true)
+      }).catch(err=>{
+        console.log(err)
+      })
+      
+    }else{
+      setAuth(false)
+    }
+  },[])
   
   return (
     <div>

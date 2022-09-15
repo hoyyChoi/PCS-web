@@ -11,9 +11,10 @@ const ArticleDetail = () => {
 
   const slug = useRecoilValue(slugState)
   const [data,setArticleData]=useState()
+  
 
   useEffect(()=>{
-    getSlugArticle(slug)
+    getSlugArticle(localStorage.getItem('slug'))
     .then(res=>{
       setArticleData(res.data.article)
     })

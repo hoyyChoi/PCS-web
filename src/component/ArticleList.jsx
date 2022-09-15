@@ -9,6 +9,7 @@ const ArticleList = ({data}) => {
   const navigate = useNavigate()
   const [slug,setSlug] = useRecoilState(slugState)
   const spaceArticle = () =>{
+    localStorage.setItem('slug',data.slug)
     setSlug(data.slug)
     navigate('/b')
   }

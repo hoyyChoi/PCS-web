@@ -5,6 +5,7 @@ import { postLoginUser } from '../remote'
 import { authState,userState } from '../atoms/auth'
 import { useRecoilState,useSetRecoilState } from 'recoil'
 
+
 const Signin = () => {
 
     let navigate = useNavigate()
@@ -21,10 +22,11 @@ const Signin = () => {
     
     const handleSubmit = (e)=>{
         e.preventDefault()
-
+        
         postLoginUser({email,password})
         .then((res)=>{
             setUserState(res.data.user)
+            localStorage.setItem("token",res.data.user.token)
             setAuth(true)
             navigate('/')
         }
