@@ -69,7 +69,7 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
     image: string;
   }}}
 */
-  const putLoginUser=(user)=>conduitAxios.put('/user',{user},{headers:{authorization:`Bearer ${user.token}`}});
+  const putLoginUser=(user)=>conduitAxios.put('/user',{user},{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}});
 
 
 
@@ -90,7 +90,37 @@ const postRegisterUser=(user)=>conduitAxios.post('/users',{user});
   // profile [post] ,[delete] 부분
 
 
+
+
   //Article
+
+   /**
+   @returns {{articles: [
+    {
+      slug: string;
+  title: string;
+  description: string;
+  body: string;
+  tagList: [
+    string
+  ];
+  createdAt: 2022-09-11T06:38:57.899Z;
+  updatedAt: 2022-09-11T06:38:57.899Z;
+  favorited: true;
+  favoritesCount: 0;
+  author: {
+    username: string;
+    bio: string;
+    image: string;
+    following: true;
+      }
+    }
+  ],
+  articlesCount: 0;
+}}
+   */
+  const getYourFeedArticles = () => conduitAxios.get('articles/feed?limit=20&offset=0',{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
+
 
    /**
    @returns {{articles: [
@@ -240,7 +270,7 @@ author: {
 }}
  */
 
-const createArticle = (article,{user}) => conduitAxios.post('/articles',{article},{headers:{authorization:`Bearer ${user.token}`}})
+const createArticle = (article) => conduitAxios.post('/articles',{article},{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
 
 /**
  @param {string} slug
@@ -268,6 +298,33 @@ author: {
  */
 const getSlugArticle = (slug) => conduitAxios.get(`/articles/${slug}`)
 
+/**
+@param {string} slug
+ */
+const deleteSlugArticle = (slug) => conduitAxios.delete(`/articles/${slug}`,{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
+
+
+//comments
+/**
+ @param {string} slug
+ @returns {{
+  comments: [
+    {
+      id: 0;
+      createdAt: 2022-09-13T09:11:17.036Z;
+      updatedAt: 2022-09-13T09:11:17.036Z;
+      body: string;
+      author: {
+        username: string;
+        bio: string;
+        image: string;
+        following: true
+      }
+    }
+  ]
+}}
+ */
+const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`)
 
 
 /**
@@ -289,7 +346,7 @@ const getSlugArticle = (slug) => conduitAxios.get(`/articles/${slug}`)
   ]
 }}
  */
-const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`,{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
+const getLoginComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`,{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
 
 /**
  @param {string} slug
@@ -318,4 +375,4 @@ const getComment = (slug) => conduitAxios.get(`/articles/${slug}/comments`,{head
 
 const postComment =(slug,comment) => conduitAxios.post(`/articles/${slug}/comments`,{comment},{headers:{authorization:`Bearer ${localStorage.getItem('token')}`}})
 
-  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getGlobalLoginArticles,getGlobalArticles,getArticles,getLoginArticles,createArticle,getSlugArticle,getComment,postComment};
+  export {postRegisterUser,postLoginUser,getLoginUser,putLoginUser,getProfile,getYourFeedArticles,getGlobalLoginArticles,getGlobalArticles,getArticles,getLoginArticles,createArticle,getSlugArticle,deleteSlugArticle,getComment,getLoginComment,postComment};

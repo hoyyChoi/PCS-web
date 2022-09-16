@@ -11,7 +11,7 @@ const ArticleList = ({data}) => {
   const spaceArticle = () =>{
     localStorage.setItem('slug',data.slug)
     setSlug(data.slug)
-    navigate('/b')
+    navigate(`/article/${localStorage.getItem('slug')}`)
   }
 
   // data.slug를 상태에 업데이트를 시켜서 Api 연결 get slug -> ARTICLE DETAIL 컴포넌트 -> 업데이트된 정보를  뿌려준다.

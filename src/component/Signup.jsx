@@ -27,7 +27,10 @@ const Signup = () => {
             navigate('/')
            
         })
-        .catch((err)=>console.log(err));
+        .catch((err)=>{
+            alert('이메일 또는 사용자 이름이 중복됩니다'+'   아니면   칸이 비어있습니다')
+            
+        });
      
 }
 
@@ -42,10 +45,6 @@ const Signup = () => {
                 <p className="text-xs-center">
                     <a href="/login">Have an account?</a>
                 </p>
-
-                <ul className="error-messages">
-                    <li>That email is already taken</li>
-                </ul>
 
                 <form onSubmit={(e)=>handleSubmit(e)}>
                     <fieldset className="form-group">

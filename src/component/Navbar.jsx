@@ -31,7 +31,7 @@ const Navbar = () => {
     getProfile(user.username)
     .then((res)=>{
         setProfile(res.data.profile)
-        navigate('/a')
+        navigate(`/${user.username}`)
     }).catch((err)=>{
         console.log(err)
      })

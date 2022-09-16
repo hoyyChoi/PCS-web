@@ -13,7 +13,7 @@ const Profile = () => {
     const auth = useRecoilValue(authState)
     
     useEffect(()=>{
-       auth?(getLoginArticles(profile.username)
+       auth ? (getLoginArticles(profile.username)
        .then(res=>{
         setArticleData(res.data.articles)
         
