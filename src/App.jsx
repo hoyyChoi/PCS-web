@@ -43,8 +43,8 @@ function App() {
           <Route path='/register' element={<Signup />}/>
           <Route path='/settings' element={<Settings />}/>
           <Route path='/editor' element={<Newarticle />}/> 
-          <Route path='/a' element={<Profile />}/> 
-          <Route path='/b' element={<ArticleDetail />}/> 
+          <Route path='/:username' element={<Profile />}/> 
+          <Route path='/article/:slug' element={<ArticleDetail />}/> 
         </Routes>
       <Footer />
     </div>

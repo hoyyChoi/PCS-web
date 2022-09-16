@@ -22,12 +22,13 @@ const Newarticle = () => {
     const submitArticle = (e)=>{
         e.preventDefault()
 
-        createArticle({title,description,body,tag},{user})
+        createArticle({title,description,body,tag})
         .then(res=>{
             setSlug(res.data.article.slug)
-            navigate('/b')
+            localStorage.setItem('slug',res.data.article.slug)
+            navigate(`/article/${localStorage.getItem('slug')}`)
         }).catch(err=>{
-            console.log(err)
+            alert('이미 있는 제목입니다.')
         })
     }
 

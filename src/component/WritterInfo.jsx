@@ -15,7 +15,7 @@ const WritterInfo = ({data}) => {
     getProfile(data.author.username)
     .then((res)=>{
         setProfile(res.data.profile)
-        navigate('/a')
+        navigate(`/${data.author.username}`)
     }).catch((err)=>{
         console.log(err)
      })

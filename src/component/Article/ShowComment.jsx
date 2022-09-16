@@ -2,23 +2,33 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRecoilValue,useRecoilState } from "recoil";
-import { commentsState, slugState } from "../../atoms/auth";
-import { getComment } from "../../remote/index";
+import { commentsState, slugState,authState} from "../../atoms/auth";
+import { getComment, getLoginComment} from "../../remote/index";
 import WritterInfo from "../WritterInfo";
+
 
 const ShowComment = () => {
   const slug = useRecoilValue(slugState);
-  let [comments, setComments] = useRecoilState(commentsState);
+  const [comments, setComments] = useRecoilState(commentsState);
+  const auth = useRecoilValue(authState)
+  
+  
 
   useEffect(() => {
-    getComment(slug)
+    auth ? (getLoginComment(slug)
       .then((res) => {
-        console.log(res.data.comments)
         setComments(res.data.comments)
       })
       .catch((err) => {
         console.log(err);
-      });
+      })) 
+      : (getComment(slug)
+      .then((res) => {
+        setComments(res.data.comments)
+      })
+      .catch((err) => {
+        console.log(err);
+      })) 
   }, [comments.length]);
 
   return (

@@ -1,28 +1,31 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useRecoilValue } from 'recoil'
-import { commentsState, slugState, userState } from '../../atoms/auth'
+import { useRecoilValue,useRecoilState } from 'recoil'
+import { commentsState, slugState} from '../../atoms/auth'
 import { postComment } from '../../remote/index'
 
 const WriteCommet = () => {
   
   const [body,setTextComment] = useState('')
   const slug = useRecoilValue(slugState)
-  const user = useRecoilValue(userState)
-  let comments = useRecoilValue(commentsState)
+  const [comments,setComments] = useRecoilState(commentsState)
+ 
   
     const submitComment = (e) =>{
       e.preventDefault()
   
       postComment(slug,{body})
       .then(res=>{
-          comments = [...comments,res.data.comment]
-          console.log(comments)
+          setComments([...comments,res.data.comment])
           //rerender 되면서 코멘트 부분이 추가됨. 페이지 전환
       }).catch(err=>{
           console.log(err)
       })
+
+      setTextComment('')
+      
     }
+
   
   
 return (
@@ -38,7 +41,7 @@ return (
           </div>
           <div className="card-footer">
             <img
-              src="http://i.imgur.com/Qr71crq.jpg"
+              src="https://api.realworld.io/images/smiley-cyrus.jpeg"
               className="comment-author-img"
             />
             <button className="btn btn-sm btn-primary" type='submit'>Post Comment</button>
