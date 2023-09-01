@@ -4,6 +4,7 @@ import {putArticle} from '../remote/index';
 import {useNavigate} from 'react-router-dom';
 import {useRecoilState} from 'recoil';
 import {modifyState} from '../atoms/index';
+import {useParams} from 'react-router-dom';
 
 const ModifyArticle = () => {
 	const [article, setArticle] = useRecoilState(modifyState);
@@ -16,7 +17,7 @@ const ModifyArticle = () => {
 	const [tag3, setTag3] = useState(article.tagList[2] || '');
 
 	const navigate = useNavigate();
-
+	let {id} = useParams();
 	const submitArticle = e => {
 		e.preventDefault();
 		let tagList;
@@ -30,7 +31,7 @@ const ModifyArticle = () => {
 			tagList = [tag1, tag2, tag3];
 		}
 
-		putArticle({title, description, body, tagList})
+		putArticle(id, {title, description, body, tagList})
 			.then(res => {
 				navigate(`/article/${res.data.data.articleId}`);
 			})
