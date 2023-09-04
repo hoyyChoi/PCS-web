@@ -10,7 +10,7 @@ import {useParams} from 'react-router-dom';
 const ArticleDetail = () => {
 	const [Articledata, setArticleData] = useRecoilState(eachArticeState);
 
-	const {Id} = useParams();
+	let {Id} = useParams();
 
 	useEffect(() => {
 		console.log(Id);
