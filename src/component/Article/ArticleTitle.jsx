@@ -41,7 +41,7 @@ const ArticleTitle = ({data}) => {
 						className="btn btn-sm btn-outline-primary"
 						onClick={deleteArticle}
 					>
-						<i class="ion-trash-a"></i>
+						<i className="ion-trash-a"></i>
 						&nbsp; 글 지우기
 					</button>
 				</div>
