@@ -2,9 +2,9 @@
 	"rewrites": [{"source": "/(.*)", "destination": "/"}],
 	"redirects": [
 		{
-			"source": "/",
+			"source": "/article/:Id",
 
-			"destination": "/article/:Id*"
+			"destination": "/article/:Id"
 		}
 	]
 }
