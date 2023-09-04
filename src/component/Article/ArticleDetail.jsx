@@ -9,12 +9,12 @@ import {useParams} from 'react-router-dom';
 
 const ArticleDetail = () => {
 	const [Articledata, setArticleData] = useRecoilState(eachArticeState);
-
+	let {Id} = useParams();
 	useEffect(() => {
-		getIdArticle(localStorage.getItem('ID')).then(res => {
+		getIdArticle(Id).then(res => {
 			setArticleData(res.data);
 		});
-	}, [localStorage.getItem('ID')]);
+	}, [Id]);
 
 	return (
 		<div className="article-page">
