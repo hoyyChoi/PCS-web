@@ -13,6 +13,7 @@ const ArticleDetail = () => {
 	let {id} = useParams();
 
 	useEffect(() => {
+		console.log(id);
 		getIdArticle(id).then(res => {
 			console.log(id);
 			setArticleData(res.data);
