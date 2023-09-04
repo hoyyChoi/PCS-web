@@ -1,74 +1,49 @@
-import React from 'react'
-import ArticleList from './ArticleList'
-import Populartags from './Populartags'
-import { useRecoilValue } from 'recoil'
-import { authState, userState } from '../atoms/auth'
-import { useEffect,useState } from 'react'
-import { getGlobalArticles,getGlobalLoginArticles } from '../remote/index'
+import React from 'react';
+import ArticleList from './ArticleList';
+import {useEffect, useState} from 'react';
+import {getGlobalArticles} from '../remote/index';
 
 const Home = () => {
-    let [articleData,setArticleData] = useState([])
-    const auth = useRecoilValue(authState)
-    const user = useRecoilValue(userState)
-    
-    useEffect(()=>{
-        auth?(getGlobalLoginArticles()
-        .then(res=>{
-            setArticleData(res.data.articles)
-        }).catch(err=>{
-            console.log(err)
-        })):
-        (getGlobalArticles()
-        .then(res=>{
-            setArticleData(res.data.articles)
-        }).catch(err=>{
-            console.log(err)
-        }))
+	let [articleData, setArticleData] = useState([]);
 
-    },[auth])
+	useEffect(() => {
+		getGlobalArticles().then(res => {
+			setArticleData(res.data);
+		});
+	}, []);
 
+	return (
+		<div className="home-page">
+			<div className="banner" style={{display: 'flex'}}>
+				<img className="img1" src="kk.png" alt="zz" />
+				<div className="container">
+					<h1 className="logo-font">kusitms</h1>
+					<p>파트 크로스 스터디에 오신 걸 환영합니다!</p>
+				</div>
+				<img className="img2" src="kk.png" alt="zz" />
+			</div>
 
-    const tag = []
-    for(let i=0; i<articleData.length; i++){
-        for(let k=0; k<articleData[i].tagList.length; k++){
-            tag.push(articleData[i].tagList[k])
-        } 
-    }
-   const tags = [...new Set(tag)]
+			<div className="container page">
+				<div className="row">
+					<div className="col-md-9">
+						<div className="feed-toggle">
+							<ul className="nav nav-pills outline-active">
+								<li className="nav-item">
+									<a className="nav-link active" href="">
+										전체 보기
+									</a>
+								</li>
+							</ul>
+						</div>
 
+						{articleData.map(data => (
+							<ArticleList data={data} />
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
 
-  return (
-    <div className="home-page">
-
-    <div className="banner" style={auth?{display:'none'}:{display:'flex'}}>
-        <div className="container">
-            <h1 className="logo-font">conduit</h1>
-            <p>A place to share your knowledge.</p>
-        </div>
-    </div>
-
-    <div className="container page">
-        <div className="row">
-
-            <div className="col-md-9">
-                <div className="feed-toggle">
-                    <ul className="nav nav-pills outline-active">
-                        <li className="nav-item">
-                            <a className="nav-link active" href="">Global Feed</a>
-                        </li>
-                    </ul>
-                </div>
-
-                {articleData.map((data)=><ArticleList data={data}/>)}
-
-                
-            </div>
-            <Populartags tags={tags} />
-        </div>
-    </div>
-
-</div>
-  )
-}
-
-export default Home
+export default Home;
