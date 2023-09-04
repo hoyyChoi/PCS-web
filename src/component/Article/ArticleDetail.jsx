@@ -14,6 +14,7 @@ const ArticleDetail = () => {
 
 	useEffect(() => {
 		getIdArticle(id).then(res => {
+			console.log(id);
 			setArticleData(res.data);
 		});
 	}, [id]);
