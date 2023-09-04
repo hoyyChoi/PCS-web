@@ -10,12 +10,12 @@ import {useParams} from 'react-router-dom';
 const ArticleDetail = () => {
 	const [Articledata, setArticleData] = useRecoilState(eachArticeState);
 
-	let {id} = useParams();
+	let {Id} = useParams();
 
 	useEffect(() => {
-		console.log(id);
-		getIdArticle(id).then(res => {
-			console.log(id);
+		console.log(Id);
+		getIdArticle(Id).then(res => {
+			console.log(Id);
 			setArticleData(res.data);
 		});
 	}, [id]);
