@@ -1,23 +1,18 @@
-import React from 'react'
+import React from 'react';
 
 const ArticleContents = ({data}) => {
-  return (
-    <div className="row article-content">
-    <div className="col-md-12">
-        <p>
-            {data&&data.body}
-        </p>
-        <div className="tag-list">
-               {data&&data.tagList.map((data)=>
-                <p className="tag-pill tag-default">{data}</p>
-               )}
-        </div>
+	return (
+		<div className="row article-content">
+			<div className="col-md-12">
+				<p>{data.body}</p>
+			</div>
+			<div className="tag-list">
+				{data.tagList.map(data => (
+					<p className="tag-pill tag-default">{data}</p>
+				))}
+			</div>
+		</div>
+	);
+};
 
-
-
-    </div>
-</div>
-  )
-}
-
-export default ArticleContents
+export default ArticleContents;
