@@ -37,8 +37,10 @@ const Home = () => {
 							</ul>
 						</div>
 
-						{articleData.map(data => (
-							<ArticleList data={data} />
+						{articleData.map((data, idx) => (
+							<React.Fragment key={idx}>
+								<ArticleList data={data} />
+							</React.Fragment>
 						))}
 					</div>
 				</div>

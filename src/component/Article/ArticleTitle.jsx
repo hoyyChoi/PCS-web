@@ -25,7 +25,7 @@ const ArticleTitle = ({data}) => {
 	return (
 		<div className="banner">
 			<div className="container">
-				<h1>{data.title}</h1>
+				<h1>{data?.title}</h1>
 
 				<div className="article-meta">
 					<WritterInfo data={data} />

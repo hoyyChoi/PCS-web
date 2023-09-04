@@ -6,9 +6,9 @@ const WritterInfo = ({data}) => {
 			<img src="/kusitm.svg" alt="author" />
 
 			<div className="info">
-				{data.articleId}
+				{data?.articleId}
 
-				<span className="date">{data.createdAt}</span>
+				<span className="date">{data?.createdAt}</span>
 			</div>
 		</div>
 	);
