@@ -18,6 +18,7 @@ const Newarticle = () => {
 		const tagList = [tag1, tag2, tag3];
 		postArticle({title, description, body, tagList})
 			.then(res => {
+				localStorage.setItem('ID', res.data.articleId);
 				navigate(`/article/${res.data.articleId}`);
 			})
 			.catch(err => {

@@ -8,6 +8,7 @@ const Home = () => {
 
 	useEffect(() => {
 		getGlobalArticles().then(res => {
+			localStorage.removeItem('ID');
 			setArticleData(res.data);
 		});
 	}, []);
