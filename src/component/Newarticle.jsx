@@ -18,7 +18,8 @@ const Newarticle = () => {
 		const tagList = [tag1, tag2, tag3];
 		postArticle({title, description, body, tagList})
 			.then(res => {
-				navigate(`/${res.data.articleId}`);
+				localStorage.setItem('ID', res.data.articleId);
+				navigate(`/article`);
 			})
 			.catch(err => {
 				alert('태그는 STUDY,HEALTH,DRINK,OTHER 가능합니다');

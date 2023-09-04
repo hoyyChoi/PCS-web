@@ -5,7 +5,8 @@ import WritterInfo from './WritterInfo';
 const ArticleList = ({data}) => {
 	const navigate = useNavigate();
 	const spaceArticle = () => {
-		navigate(`/${data.articleId}`);
+		localStorage.setItem('ID', data.articleId);
+		navigate(`/article`);
 	};
 
 	return (
