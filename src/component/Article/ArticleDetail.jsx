@@ -14,7 +14,7 @@ const ArticleDetail = () => {
 		getIdArticle(localStorage.getItem('ID')).then(res => {
 			setArticleData(res.data);
 		});
-	}, []);
+	}, [localStorage.getItem('ID')]);
 
 	return (
 		<div className="article-page">
