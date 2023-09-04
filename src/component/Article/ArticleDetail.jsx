@@ -18,7 +18,7 @@ const ArticleDetail = () => {
 			console.log(Id);
 			setArticleData(res.data);
 		});
-	}, [id]);
+	}, []);
 
 	return (
 		<div className="article-page">
