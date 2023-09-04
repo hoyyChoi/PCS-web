@@ -10,7 +10,7 @@ import {useParams} from 'react-router-dom';
 const ArticleDetail = () => {
 	const [Articledata, setArticleData] = useRecoilState(eachArticeState);
 
-	let {Id} = useParams();
+	const {Id} = useParams();
 
 	useEffect(() => {
 		console.log(Id);
@@ -18,7 +18,7 @@ const ArticleDetail = () => {
 			console.log(Id);
 			setArticleData(res.data);
 		});
-	}, []);
+	}, [Id]);
 
 	return (
 		<div className="article-page">
