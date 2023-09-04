@@ -1,41 +1,17 @@
-import React from "react";
-import { useRecoilState } from "recoil";
-import { profileState } from "../atoms/auth";
-import { useNavigate } from "react-router-dom";
-import { getProfile } from "../remote/index";
-
-
+import React from 'react';
 
 const WritterInfo = ({data}) => {
-  
-  const [profile,setProfile] = useRecoilState(profileState)
-  const navigate = useNavigate()
+	return (
+		<div style={{display: 'inline'}}>
+			<img src="/kusitm.svg" alt="author" />
 
-  const spaceProfile = () =>{
-    getProfile(data.author.username)
-    .then((res)=>{
-        setProfile(res.data.profile)
-        navigate(`/${data.author.username}`)
-    }).catch((err)=>{
-        console.log(err)
-     })
-  }
-    
- 
-  return (
-    
-      <div style={{'display':'inline'}}>
-          <a onClick={spaceProfile} style={{cursor:'pointer'}}>
-            <img src={data&&data.author.image} />
-          </a>
-          <div className="info">
-            <a onClick={spaceProfile} className="author" style={{cursor:'pointer'}}>
-              {data&&data.author.username}
-            </a>
-            <span className="date">{data&&data.createdAt}</span>
-          </div>
-      </div>
-  );
+			<div className="info">
+				{data.articleId}
+
+				<span className="date">{data.createdAt}</span>
+			</div>
+		</div>
+	);
 };
 
 export default WritterInfo;
