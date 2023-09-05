@@ -7,21 +7,28 @@ import {useParams} from 'react-router-dom';
 import {useState} from 'react';
 
 const ArticleDetail = () => {
-	const [Articledata, setArticleData] = useState({});
+	const [Articledata, setArticleData] = useState();
 	let {id} = useParams();
 	useEffect(() => {
+		console.log(id);
 		getIdArticle(id)
 			.then(res => {
 				setArticleData(res.data);
 			})
 			.catch(err => console.log(err));
-	}, [id]);
+	}, []);
 
 	return (
-		<div className="article-page">
-			<ArticleTitle data={Articledata} />
-			<ArticleContainer data={Articledata} />
-		</div>
+		<>
+			{Articledata ? (
+				<div className="article-page">
+					<ArticleTitle data={Articledata} />
+					<ArticleContainer data={Articledata} />
+				</div>
+			) : (
+				''
+			)}
+		</>
 	);
 };
 
