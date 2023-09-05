@@ -27,7 +27,7 @@ const Newarticle = () => {
 		}
 		postArticle({title, description, body, tagList})
 			.then(res => {
-				navigate(`/article/${res.data.articleId}`);
+				navigate(`/article/${res.data.data.articleId}`);
 			})
 			.catch(err => {
 				alert('태그는 STUDY ,HEALTH ,DRINK ,OTHER  가능합니다');

@@ -32,7 +32,7 @@ const ModifyArticle = () => {
 
 		putArticle({title, description, body, tagList})
 			.then(res => {
-				navigate(`/article/${res.data.articleId}`);
+				navigate(`/article/${res.data.data.articleId}`);
 			})
 			.catch(err => {
 				console.log(err);

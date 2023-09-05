@@ -13,7 +13,7 @@ const ArticleDetail = () => {
 		console.log(id);
 		getIdArticle(id)
 			.then(res => {
-				setArticleData(res.data);
+				setArticleData(res.data.data);
 			})
 			.catch(err => console.log(err));
 	}, []);
