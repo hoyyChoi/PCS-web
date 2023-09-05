@@ -132,3 +132,9 @@ fieldset .btn-primary:visited {
 .navbar-light .navbar-nav .nav-link:hover {
 	color: #2a83ff;
 }
+
+@media (min-width: 768px) {
+	.container {
+		max-width: 90%;
+	}
+}
