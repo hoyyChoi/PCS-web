@@ -1,10 +1,10 @@
 import React from 'react';
-import ArticleContainer from './ArticleContainer';
-import ArticleTitle from './ArticleTitle';
-import {getIdArticle} from '../../remote/index';
+import ArticleContainer from './Article/ArticleContainer';
+import ArticleTitle from './Article/ArticleTitle';
+import {getIdArticle} from '../remote/index';
 import {useEffect} from 'react';
 import {useRecoilState} from 'recoil';
-import {eachArticeState} from '../../atoms/auth';
+import {eachArticeState} from '../atoms/auth';
 import {useParams} from 'react-router-dom';
 
 const ArticleDetail = () => {
