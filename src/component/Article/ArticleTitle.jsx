@@ -1,10 +1,15 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {deleteIdArticle} from '../../remote/index';
+import {deleteIdArticle, getIdArticle} from '../../remote/index';
 import WritterInfo from '../WritterInfo';
+import {useParams} from 'react-router-dom';
+import {useRecoilState} from 'recoil';
+import {modifyState} from '../../atoms/index';
 
 const ArticleTitle = ({data}) => {
 	const navigate = useNavigate();
+	const [article, setArticle] = useRecoilState(modifyState);
+	let {id} = useParams();
 
 	const deleteArticle = () => {
 		deleteIdArticle(data.articleId)
@@ -19,7 +24,10 @@ const ArticleTitle = ({data}) => {
 
 	const putArticle = () => {
 		// 수정하기로 이동
-		alert('준비중입니다. 기달려주세요');
+		getIdArticle(id).then(res => {
+			setArticle(res.data);
+			navigate('/modify/article');
+		});
 	};
 
 	return (
