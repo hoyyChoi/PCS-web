@@ -21,7 +21,7 @@ const Newarticle = () => {
 				navigate(`/article/${res.data.articleId}`);
 			})
 			.catch(err => {
-				alert('태그는 STUDY,HEALTH,DRINK,OTHER 가능합니다');
+				alert('태그는 STUDY ,HEALTH ,DRINK ,OTHER  가능합니다');
 			});
 	};
 
