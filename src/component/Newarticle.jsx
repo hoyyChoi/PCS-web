@@ -15,7 +15,16 @@ const Newarticle = () => {
 
 	const submitArticle = e => {
 		e.preventDefault();
-		const tagList = [tag1, tag2, tag3];
+		let tagList;
+		if (tag1 === '') {
+			tagList = ['STUDY'];
+		} else if (tag2 === '') {
+			tagList = [tag1];
+		} else if (tag3 === '') {
+			tagList = [tag1, tag2];
+		} else {
+			tagList = [tag1, tag2, tag3];
+		}
 		postArticle({title, description, body, tagList})
 			.then(res => {
 				navigate(`/article/${res.data.articleId}`);
@@ -63,21 +72,21 @@ const Newarticle = () => {
 									<input
 										type="text"
 										className="form-control"
-										placeholder="Enter tags"
+										placeholder="태그"
 										value={tag1}
 										onChange={e => setTag1(e.currentTarget.value)}
 									/>
 									<input
 										type="text"
 										className="form-control"
-										placeholder="Enter tags"
+										placeholder="태그"
 										value={tag2}
 										onChange={e => setTag2(e.currentTarget.value)}
 									/>
 									<input
 										type="text"
 										className="form-control"
-										placeholder="Enter tags"
+										placeholder="태그"
 										value={tag3}
 										onChange={e => setTag3(e.currentTarget.value)}
 									/>
