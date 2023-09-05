@@ -11,9 +11,11 @@ const ArticleDetail = () => {
 	const [Articledata, setArticleData] = useRecoilState(eachArticeState);
 	let {id} = useParams();
 	useEffect(() => {
-		getIdArticle(id).then(res => {
-			setArticleData(res.data);
-		});
+		getIdArticle(id)
+			.then(res => {
+				setArticleData(res.data);
+			})
+			.catch(err => console.log(err));
 	}, [id]);
 
 	return (
