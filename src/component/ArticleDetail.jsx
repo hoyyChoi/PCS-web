@@ -4,6 +4,7 @@ import ArticleTitle from './Article/ArticleTitle';
 import {getIdArticle} from '../remote/index';
 import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import {useState} from 'react';
 
 const ArticleDetail = () => {
 	const [Articledata, setArticleData] = useState({});
