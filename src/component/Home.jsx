@@ -2,13 +2,19 @@ import React from 'react';
 import ArticleList from './ArticleList';
 import {useEffect, useState} from 'react';
 import {getGlobalArticles} from '../remote/index';
+import {useNavigate} from 'react-router-dom';
 
 const Home = () => {
 	let [articleData, setArticleData] = useState();
+	const navigate = useNavigate();
+
+	const spaceWriter = () => {
+		navigate('/editor');
+	};
 
 	useEffect(() => {
 		getGlobalArticles().then(res => {
-			setArticleData(res.data.data);
+			setArticleData(res.data.data.reverse());
 		});
 	}, []);
 
@@ -43,6 +49,9 @@ const Home = () => {
 								))}
 							</div>
 						</div>
+					</div>
+					<div className="floatingWriter" onClick={spaceWriter}>
+						<img src="pencil.svg" alt="글쓰기" width={35} />
 					</div>
 				</div>
 			) : (
