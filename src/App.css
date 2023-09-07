@@ -138,3 +138,20 @@ fieldset .btn-primary:visited {
 		max-width: 90%;
 	}
 }
+
+.floatingWriter {
+	width: 80px;
+	height: 80px;
+	background-color: #2a83ff;
+	color: #fff;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 50px;
+	right: 100px;
+	z-index: 9;
+}
