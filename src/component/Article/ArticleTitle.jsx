@@ -18,9 +18,7 @@ const ArticleTitle = ({data}) => {
 			})
 			.catch(err => {
 				console.log(err);
-				alert(
-					'a  r aaaaa  i l 은 지울 수 없 습 니 다 efqefefeqfeqfwfwefqwfwfwefqwefewfeqwfwqef.',
-				);
+				alert('a  r aaaaa  i l 은 지울 수 없 습 니 다 .');
 			});
 	};
 
