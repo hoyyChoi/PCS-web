@@ -7,7 +7,7 @@ import {useRecoilState} from 'recoil';
 import {modifyState} from '../../atoms/index';
 
 const ArticleTitle = ({data}) => {
-	const navigate = useNavigate();
+	let navigate = useNavigate();
 	const [article, setArticle] = useRecoilState(modifyState);
 	let {id} = useParams();
 
@@ -18,7 +18,7 @@ const ArticleTitle = ({data}) => {
 			})
 			.catch(err => {
 				console.log(err);
-				alert('article은 지울 수 없습니다.');
+				alert('article은 지울수없습니다.');
 			});
 	};
 
