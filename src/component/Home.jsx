@@ -26,7 +26,7 @@ const Home = () => {
 						<img className="img1" src="kk.png" alt="zz" />
 						<div className="container">
 							<h1 className="logo-font">kusitms</h1>
-							<p>파트 크로스 스터디에 오신 걸 환영합니다!</p>
+							<p>파트 크로스 스터디에 오신 걸 환영합니다!~~~~~~~~~~</p>
 						</div>
 						<img className="img2" src="kk.png" alt="zz" />
 					</div>
