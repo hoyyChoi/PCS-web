@@ -18,7 +18,7 @@ const ArticleTitle = ({data}) => {
 			})
 			.catch(err => {
 				console.log(err);
-				alert('article은 지울수없습니다.');
+				alert('a  r   t    ic    le    은 지울 수 없 습 니 다 .');
 			});
 	};
 
