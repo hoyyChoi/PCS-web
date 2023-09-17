@@ -9,7 +9,7 @@ import {modifyState} from '../../atoms/index';
 const ArticleTitle = ({data}) => {
 	const navigate = useNavigate();
 	const [article, setArticle] = useRecoilState(modifyState);
-	let {id} = useParams();
+	const {id} = useParams();
 
 	const deleteArticle = () => {
 		deleteIdArticle(data.articleId)
