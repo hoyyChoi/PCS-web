@@ -23,7 +23,6 @@ const ArticleTitle = ({data}) => {
 	};
 
 	const putArticle = () => {
-		// 수정하기로 이동
 		getIdArticle(id).then(res => {
 			setArticle(res.data.data);
 			navigate(`/modify/article/${id}`);
